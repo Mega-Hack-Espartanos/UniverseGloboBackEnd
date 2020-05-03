@@ -15,8 +15,10 @@ routes.post('/interesse', InteresseController.store);
 
 routes.post('/usuario/:usuarioId/:interesseId', Vincular.store);
 
-routes.get('/news', NewsController.index);
-routes.post('/news', NewsController.store);
-routes.post('/newsdetails/:id', NewsController.details);
+routes.get('/news/:id', NewsController.GetNews);
+routes.get('/news', NewsController.GetNews);
+routes.post('/news', NewsController.PostNews);
+routes.put('/news/:id', NewsController.PutNews);
+routes.delete('/news/:id', NewsController.DeleteNews);
 
 module.exports = routes;

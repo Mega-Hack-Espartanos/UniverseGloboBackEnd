@@ -1,21 +1,45 @@
-const news = require("../model/news");
+const newsModel = require("../model/news");
 
 module.exports = {
-    async store(req, res) {
-        const newsSave = await news.create(req.body);
-
-        return res.json(newsSave);
+    async PostNews(req, res) {
+        const news = await newsModel.create(req.body);
+        return res.json(news);
     },
 
-    async index(req, res) {
-        const newsIndex = await news.find();
-
-        return res.json(newsIndex);
+    async GetNews(req, res) {
+        if (!req.params.id) {
+            const news = await newsModel.find();
+            return res.json(news);
+        } else {
+            const news = await newsModel.findById(req.params.id);
+            return res.json(news);
+        }
     }, 
 
-    async details(req, res) {
-        const newsDetails = await news.findById(req.params.id);
+    async PutNews(req, res) {
+        var id = req.params.id;
+        var title = req.body.title;
+        var subtitle = req.body.subtitle;
+        var author = req.body.author;
+        var datePublication = req.body.datePublication;
+        var text = req.body.author;
+
+        const news = await newsModel.update({_id:id}, {$set:{
+                title:title, 
+                subtitle:subtitle, 
+                author:author, 
+                datePublication:datePublication,
+                text:text
+            }
+        });
         
-        return res.json(newsDetails);
+        return res.json(news);
+    },
+
+    async DeleteNews(req, res) {
+        var id = req.params.id;
+        const news = await newsModel.remove({_id: id});
+
+        return res.json(news);
     }
 };
