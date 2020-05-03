@@ -23,13 +23,15 @@ module.exports = {
         var author = req.body.author;
         var datePublication = req.body.datePublication;
         var text = req.body.author;
+        var tag = req.body.tag;
 
         const news = await newsModel.update({_id:id}, {$set:{
                 title:title, 
                 subtitle:subtitle, 
                 author:author, 
                 datePublication:datePublication,
-                text:text
+                text:text,
+                tag:tag
             }
         });
         
