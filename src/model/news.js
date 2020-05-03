@@ -21,6 +21,10 @@ const NewsSchema = new Schema(
         text: {
             type: String,
             require: true
+        },
+        tag: {
+            type: String,
+            require: true
         }
     },
     {
