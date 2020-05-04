@@ -3,6 +3,7 @@ const UsuarioController = require('./controller/usuarioController');
 const InteresseController = require('./controller/interesseController');
 const Vincular = require('./controller/vincular');
 const NewsController = require('./controller/newsController');
+const GloboPlayController = require('./controller/globoplayController');
 
 const routes = express.Router();
 
@@ -20,5 +21,11 @@ routes.get('/news', NewsController.GetNews);
 routes.post('/news', NewsController.PostNews);
 routes.put('/news/:id', NewsController.PutNews);
 routes.delete('/news/:id', NewsController.DeleteNews);
+
+routes.get('/globoplay/:id', GloboPlayController.GetGloboPlay);
+routes.get('/globoplay', GloboPlayController.GetGloboPlay);
+routes.post('/globoplay', GloboPlayController.PostGloploPlay);
+routes.put('/globoplay/:id', GloboPlayController.PutGloboPlay);
+routes.delete('/globoplay/:id', GloboPlayController.DeleteGloboPlay);
 
 module.exports = routes;
