@@ -19,10 +19,10 @@ module.exports = {
     async PutGloboPlay(req, res) {
         var id = req.params.id;
         var title = req.body.title;
-        var synopsis = req.body.subtitle;
-        var genre = req.body.author;
-        var image = req.body.datePublication;
-        var dateRelease = req.body.author;
+        var synopsis = req.body.synopsis;
+        var genre = req.body.genre;
+        var image = req.body.image;
+        var dateRelease = req.body.dateRelease;
         var tag = req.body.tag;
 
         const news = await globoplayModel.update({ _id: id }, {
